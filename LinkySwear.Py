@@ -3,7 +3,6 @@
 from docx import Document
 from docx.opc.constants import RELATIONSHIP_TYPE as RT
 
-
 # importing dependencies for excel sheet
 import xlwt
 workbook = xlwt.Workbook()
@@ -13,15 +12,15 @@ sheet = workbook.add_sheet("scraped_links")
 style = xlwt.easyxf('font: bold 1')
 
 
-print("\n This program changes the hyperlinks detected in a word .docx file \n")
+print("\n This program finds all the hyperlinks detected in a word .docx file \n")
 print("Document must be in Downloads folder.\n")
 
-docx_file = input(" Please input docx filename (without .docx): ")
+docx_file = raw_input(" Please input docx filename (without .docx): ")
 
 document = Document("/Users/lukeb/Downloads/" + docx_file + ".docx")
 
 
-out_file = input(" Please enter the name of excel file (without .xls): ")
+out_file = raw_input(" Please enter the name of excel file (without .xls): ")
 
 rels = document.part.rels
 links = []
@@ -30,7 +29,6 @@ for rel in rels:
     if rels[rel].reltype == RT.HYPERLINK and "http" in rels[rel]._target:
        # print ("\n Original link id -", rel, "with detected URL: ", chrels[rel]._target)
         links.append(rels[rel]._target)
-    if rels[rel].reltype == RT.HYPERLINK and
 
 for idx, val in enumerate(links):
     print (idx, val)
