@@ -1,3 +1,5 @@
+## This script scrapes hyperlinks from a word document 
+## (located in your downloads folder) and adds them to a spreadsheet.
 
 # importing dependencies for word doc
 from docx import Document
